@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="006-create-trilhas-table" author="system">
+        <createTable tableName="tb_trilhas">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="ds_nome" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_user" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+            <column name="ds_status" type="VARCHAR(20)" defaultValue="CRIADA">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <addForeignKeyConstraint 
+            baseTableName="tb_trilhas"
+            baseColumnNames="id_user"
+            constraintName="fk_trilha_user"
+            referencedTableName="tb_users"
+            referencedColumnNames="id"
+            onDelete="SET NULL"/>
+    </changeSet>
+
+    <changeSet id="007-create-trilha-topico-table" author="system">
+        <createTable tableName="tb_trilha_topico">
+            <column name="id_trilha" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_trilha_topico_trilha" 
+                             references="tb_trilhas(id)" deleteCascade="true"/>
+            </column>
+            <column name="id_topico" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_trilha_topico_topico" 
+                             references="tb_topicos(id)" deleteCascade="true"/>
+            </column>
+        </createTable>
+        
+        <addPrimaryKey tableName="tb_trilha_topico" 
+                       columnNames="id_trilha, id_topico" 
+                       constraintName="pk_trilha_topico"/>
+    </changeSet>
+
+    <changeSet id="008-create-trilha-relacionada-table" author="system">
+        <createTable tableName="tb_trilha_relacionada">
+            <column name="id_trilha" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_trilha_relacionada_trilha" 
+                             references="tb_trilhas(id)" deleteCascade="true"/>
+            </column>
+            <column name="id_trilha_relacionada" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_trilha_relacionada_trilha_rel" 
+                             references="tb_trilhas(id)" deleteCascade="true"/>
+            </column>
+        </createTable>
+        
+        <addPrimaryKey tableName="tb_trilha_relacionada" 
+                       columnNames="id_trilha, id_trilha_relacionada" 
+                       constraintName="pk_trilha_relacionada"/>
+    </changeSet>
+
+</databaseChangeLog>
+

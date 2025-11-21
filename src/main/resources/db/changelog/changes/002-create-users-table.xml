@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="002-create-users-table" author="system">
+        <createTable tableName="tb_users">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="ds_nome" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ds_apelido" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ds_email" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="ds_cpf" type="VARCHAR(11)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="ds_idade" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="003-create-users-indexes" author="system">
+        <createIndex indexName="idx_users_email" tableName="tb_users">
+            <column name="ds_email"/>
+        </createIndex>
+        
+        <createIndex indexName="idx_users_cpf" tableName="tb_users">
+            <column name="ds_cpf"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>
+

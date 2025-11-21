@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- Inserir 2 Usuários -->
+    <changeSet id="010-insert-users" author="system">
+        <insert tableName="tb_users">
+            <column name="ds_nome" value="João Silva"/>
+            <column name="ds_apelido" value="joaodev"/>
+            <column name="ds_email" value="joao.silva@example.com"/>
+            <column name="ds_cpf" value="12345678901"/>
+            <column name="ds_idade" valueNumeric="28"/>
+        </insert>
+
+        <insert tableName="tb_users">
+            <column name="ds_nome" value="Maria Santos"/>
+            <column name="ds_apelido" value="mariaTech"/>
+            <column name="ds_email" value="maria.santos@example.com"/>
+            <column name="ds_cpf" value="98765432109"/>
+            <column name="ds_idade" valueNumeric="32"/>
+        </insert>
+    </changeSet>
+
+    <!-- Inserir 8 Tópicos -->
+    <changeSet id="011-insert-topicos" author="system">
+        <insert tableName="tb_topicos">
+            
+            <column name="ds_nome" value="Introdução ao Java"/>
+            <column name="ds_nivel" value="BASICO"/>
+            <column name="ds_tema" value="BACKEND"/>
+            <column name="nr_curtidas" valueNumeric="150"/>
+            <column name="ds_conteudo" value="&lt;h1&gt;Introdução ao Java&lt;/h1&gt;&lt;p&gt;Java é uma linguagem de programação orientada a objetos, robusta e multiplataforma.&lt;/p&gt;&lt;h2&gt;Principais Características:&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;Portabilidade (Write Once, Run Anywhere)&lt;/li&gt;&lt;li&gt;Orientação a Objetos&lt;/li&gt;&lt;li&gt;Gerenciamento automático de memória&lt;/li&gt;&lt;li&gt;Grande comunidade e ecossistema&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;Exemplo:&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;public class HelloWorld { public static void main(String[] args) { System.out.println(&quot;Hello, World!&quot;); } }&lt;/code&gt;&lt;/pre&gt;"/>
+            <column name="ds_referencias" value="https://docs.oracle.com/javase/tutorial/"/>
+        </insert>
+
+        <insert tableName="tb_topicos">
+            <column name="ds_nome" value="Spring Boot Fundamentos"/>
+            <column name="ds_nivel" value="INTERMEDIARIO"/>
+            <column name="ds_tema" value="BACKEND"/>
+            <column name="nr_curtidas" valueNumeric="200"/>
+            <column name="ds_conteudo" value="&lt;h1&gt;Spring Boot Fundamentos&lt;/h1&gt;&lt;p&gt;Spring Boot facilita a criação de aplicações Java standalone e prontas para produção.&lt;/p&gt;&lt;h2&gt;Principais Recursos:&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;Auto-configuração&lt;/li&gt;&lt;li&gt;Starter Dependencies&lt;/li&gt;&lt;li&gt;Embedded Server&lt;/li&gt;&lt;li&gt;Production-ready features&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;Exemplo de Application:&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;@SpringBootApplication public class Application { public static void main(String[] args) { SpringApplication.run(Application.class, args); } }&lt;/code&gt;&lt;/pre&gt;"/>
+            <column name="ds_referencias" value="https://spring.io/projects/spring-boot"/>
+        </insert>
+
+        <insert tableName="tb_topicos">
+            <column name="ds_nome" value="REST APIs com Spring"/>
+            <column name="ds_nivel" value="AVANCADO"/>
+            <column name="ds_tema" value="BACKEND"/>
+            <column name="nr_curtidas" valueNumeric="180"/>
+            <column name="ds_conteudo" value="&lt;h1&gt;REST APIs com Spring&lt;/h1&gt;&lt;p&gt;Aprenda a criar APIs RESTful robustas e escaláveis usando Spring Framework.&lt;/p&gt;&lt;h2&gt;Conceitos Importantes:&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;Controllers e RequestMapping&lt;/li&gt;&lt;li&gt;HTTP Methods (GET, POST, PUT, DELETE)&lt;/li&gt;&lt;li&gt;ResponseEntity e Status Codes&lt;/li&gt;&lt;li&gt;Validação e Exception Handling&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;Exemplo de Controller:&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;@RestController @RequestMapping(&quot;/api/users&quot;) public class UserController { @GetMapping public List&lt;User&gt; getAll() { return userService.findAll(); } }&lt;/code&gt;&lt;/pre&gt;"/>
+            <column name="ds_referencias" value="https://spring.io/guides/gs/rest-service/"/>
+        </insert>
+
+        <insert tableName="tb_topicos">
+            <column name="ds_nome" value="JPA e Hibernate"/>
+            <column name="ds_nivel" value="INTERMEDIARIO"/>
+            <column name="ds_tema" value="BACKEND"/>
+            <column name="nr_curtidas" valueNumeric="165"/>
+            <column name="ds_conteudo" value="&lt;h1&gt;JPA e Hibernate&lt;/h1&gt;&lt;p&gt;JPA (Java Persistence API) é uma especificação para mapeamento objeto-relacional em Java.&lt;/p&gt;&lt;h2&gt;Principais Conceitos:&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;Entities e Annotations&lt;/li&gt;&lt;li&gt;Repositories&lt;/li&gt;&lt;li&gt;JPQL e Criteria API&lt;/li&gt;&lt;li&gt;Relacionamentos (OneToMany, ManyToMany)&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;Exemplo de Entity:&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;@Entity public class Product { @Id @GeneratedValue private Long id; private String name; private Double price; }&lt;/code&gt;&lt;/pre&gt;"/>
+            <column name="ds_referencias" value="https://hibernate.org/orm/documentation/"/>
+        </insert>
+
+        <insert tableName="tb_topicos">
+            <column name="ds_nome" value="React Fundamentos"/>
+            <column name="ds_nivel" value="BASICO"/>
+            <column name="ds_tema" value="FRONTEND"/>
+            <column name="nr_curtidas" valueNumeric="220"/>
+            <column name="ds_conteudo" value="&lt;h1&gt;React Fundamentos&lt;/h1&gt;&lt;p&gt;React é uma biblioteca JavaScript para construir interfaces de usuário.&lt;/p&gt;&lt;h2&gt;Principais Conceitos:&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;Componentes e Props&lt;/li&gt;&lt;li&gt;State e Lifecycle&lt;/li&gt;&lt;li&gt;Hooks (useState, useEffect)&lt;/li&gt;&lt;li&gt;Virtual DOM&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;Exemplo de Componente:&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;function Welcome(props) { return &lt;h1&gt;Hello, {props.name}&lt;/h1&gt;; } export default Welcome;&lt;/code&gt;&lt;/pre&gt;"/>
+            <column name="ds_referencias" value="https://react.dev/"/>
+        </insert>
+
+        <insert tableName="tb_topicos">
+            <column name="ds_nome" value="TypeScript para React"/>
+            <column name="ds_nivel" value="INTERMEDIARIO"/>
+            <column name="ds_tema" value="FRONTEND"/>
+            <column name="nr_curtidas" valueNumeric="190"/>
+            <column name="ds_conteudo" value="&lt;h1&gt;TypeScript para React&lt;/h1&gt;&lt;p&gt;TypeScript adiciona tipagem estática ao JavaScript, tornando o código mais robusto.&lt;/p&gt;&lt;h2&gt;Vantagens:&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;Type Safety&lt;/li&gt;&lt;li&gt;IntelliSense aprimorado&lt;/li&gt;&lt;li&gt;Refactoring mais seguro&lt;/li&gt;&lt;li&gt;Melhor documentação do código&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;Exemplo:&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;interface Props { name: string; age: number; } const User: React.FC&lt;Props&gt; = ({ name, age }) =&gt; { return &lt;div&gt;{name} - {age}&lt;/div&gt;; };&lt;/code&gt;&lt;/pre&gt;"/>
+            <column name="ds_referencias" value="https://www.typescriptlang.org/docs/"/>
+        </insert>
+
+        <insert tableName="tb_topicos">
+            <column name="ds_nome" value="Docker para Desenvolvedores"/>
+            <column name="ds_nivel" value="INTERMEDIARIO"/>
+            <column name="ds_tema" value="DEVOPS"/>
+            <column name="nr_curtidas" valueNumeric="175"/>
+            <column name="ds_conteudo" value="&lt;h1&gt;Docker para Desenvolvedores&lt;/h1&gt;&lt;p&gt;Docker permite empacotar aplicações em containers leves e portáveis.&lt;/p&gt;&lt;h2&gt;Conceitos Principais:&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;Imagens e Containers&lt;/li&gt;&lt;li&gt;Dockerfile&lt;/li&gt;&lt;li&gt;Docker Compose&lt;/li&gt;&lt;li&gt;Volumes e Networks&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;Exemplo de Dockerfile:&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;FROM openjdk:17 COPY target/app.jar app.jar EXPOSE 8080 ENTRYPOINT [&quot;java&quot;, &quot;-jar&quot;, &quot;app.jar&quot;]&lt;/code&gt;&lt;/pre&gt;"/>
+            <column name="ds_referencias" value="https://docs.docker.com/"/>
+        </insert>
+
+        <insert tableName="tb_topicos">
+            <column name="ds_nome" value="CI/CD com GitHub Actions"/>
+            <column name="ds_nivel" value="AVANCADO"/>
+            <column name="ds_tema" value="DEVOPS"/>
+            <column name="nr_curtidas" valueNumeric="160"/>
+            <column name="ds_conteudo" value="&lt;h1&gt;CI/CD com GitHub Actions&lt;/h1&gt;&lt;p&gt;Automatize seus workflows de desenvolvimento com GitHub Actions.&lt;/p&gt;&lt;h2&gt;Principais Recursos:&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;Workflows automatizados&lt;/li&gt;&lt;li&gt;Testes automáticos&lt;/li&gt;&lt;li&gt;Deploy contínuo&lt;/li&gt;&lt;li&gt;Integração com diversos serviços&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;Exemplo de Workflow:&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;name: CI on: [push, pull_request] jobs: build: runs-on: ubuntu-latest steps: - uses: actions/checkout@v2 - name: Run tests run: mvn test&lt;/code&gt;&lt;/pre&gt;"/>
+            <column name="ds_referencias" value="https://docs.github.com/en/actions"/>
+        </insert>
+    </changeSet>
+
+    <!-- Relacionamentos entre Tópicos -->
+    <changeSet id="012-insert-topicos-relacionados" author="system">
+        <!-- Java relacionado com Spring Boot -->
+        <insert tableName="tb_topicos_relacionados">
+            <column name="id_topico" valueNumeric="1"/>
+            <column name="id_topico_relacionado" valueNumeric="2"/>
+        </insert>
+
+        <!-- Spring Boot relacionado com REST APIs -->
+        <insert tableName="tb_topicos_relacionados">
+            <column name="id_topico" valueNumeric="2"/>
+            <column name="id_topico_relacionado" valueNumeric="3"/>
+        </insert>
+
+        <!-- Spring Boot relacionado com JPA -->
+        <insert tableName="tb_topicos_relacionados">
+            <column name="id_topico" valueNumeric="2"/>
+            <column name="id_topico_relacionado" valueNumeric="4"/>
+        </insert>
+
+        <!-- REST APIs relacionado com JPA -->
+        <insert tableName="tb_topicos_relacionados">
+            <column name="id_topico" valueNumeric="3"/>
+            <column name="id_topico_relacionado" valueNumeric="4"/>
+        </insert>
+
+        <!-- React relacionado com TypeScript -->
+        <insert tableName="tb_topicos_relacionados">
+            <column name="id_topico" valueNumeric="5"/>
+            <column name="id_topico_relacionado" valueNumeric="6"/>
+        </insert>
+
+        <!-- Docker relacionado com CI/CD -->
+        <insert tableName="tb_topicos_relacionados">
+            <column name="id_topico" valueNumeric="7"/>
+            <column name="id_topico_relacionado" valueNumeric="8"/>
+        </insert>
+
+        <!-- Spring Boot relacionado com Docker -->
+        <insert tableName="tb_topicos_relacionados">
+            <column name="id_topico" valueNumeric="2"/>
+            <column name="id_topico_relacionado" valueNumeric="7"/>
+        </insert>
+
+        <!-- React relacionado com CI/CD -->
+        <insert tableName="tb_topicos_relacionados">
+            <column name="id_topico" valueNumeric="5"/>
+            <column name="id_topico_relacionado" valueNumeric="8"/>
+        </insert>
+    </changeSet>
+
+    <!-- Inserir 4 Trilhas -->
+    <changeSet id="013-insert-trilhas" author="system">
+        <insert tableName="tb_trilhas">
+            
+            <column name="ds_nome" value="Trilha Backend Java Completo"/>
+            <column name="id_user" valueNumeric="1"/>
+            <column name="ds_status" value="CRIADA"/>
+        </insert>
+
+        <insert tableName="tb_trilhas">
+            <column name="ds_nome" value="Trilha Frontend React Moderno"/>
+            <column name="id_user" valueNumeric="2"/>
+            <column name="ds_status" value="FINALIZADA"/>
+        </insert>
+
+        <insert tableName="tb_trilhas">
+            <column name="ds_nome" value="Trilha DevOps Essencial"/>
+            <column name="id_user" valueNumeric="1"/>
+            <column name="ds_status" value="CRIADA"/>
+        </insert>
+
+        <insert tableName="tb_trilhas">
+            <column name="ds_nome" value="Trilha Full Stack Developer"/>
+            <column name="id_user" valueNumeric="2"/>
+            <column name="ds_status" value="CRIADA"/>
+        </insert>
+    </changeSet>
+
+    <!-- Relacionar Trilhas com Tópicos -->
+    <changeSet id="014-insert-trilha-topico" author="system">
+        <!-- Trilha 1: Backend Java (Tópicos 1, 2, 3, 4) -->
+        <insert tableName="tb_trilha_topico">
+            <column name="id_trilha" valueNumeric="1"/>
+            <column name="id_topico" valueNumeric="1"/>
+        </insert>
+        <insert tableName="tb_trilha_topico">
+            <column name="id_trilha" valueNumeric="1"/>
+            <column name="id_topico" valueNumeric="2"/>
+        </insert>
+        <insert tableName="tb_trilha_topico">
+            <column name="id_trilha" valueNumeric="1"/>
+            <column name="id_topico" valueNumeric="3"/>
+        </insert>
+        <insert tableName="tb_trilha_topico">
+            <column name="id_trilha" valueNumeric="1"/>
+            <column name="id_topico" valueNumeric="4"/>
+        </insert>
+
+        <!-- Trilha 2: Frontend React (Tópicos 5, 6) -->
+        <insert tableName="tb_trilha_topico">
+            <column name="id_trilha" valueNumeric="2"/>
+            <column name="id_topico" valueNumeric="5"/>
+        </insert>
+        <insert tableName="tb_trilha_topico">
+            <column name="id_trilha" valueNumeric="2"/>
+            <column name="id_topico" valueNumeric="6"/>
+        </insert>
+
+        <!-- Trilha 3: DevOps (Tópicos 7, 8) -->
+        <insert tableName="tb_trilha_topico">
+            <column name="id_trilha" valueNumeric="3"/>
+            <column name="id_topico" valueNumeric="7"/>
+        </insert>
+        <insert tableName="tb_trilha_topico">
+            <column name="id_trilha" valueNumeric="3"/>
+            <column name="id_topico" valueNumeric="8"/>
+        </insert>
+
+        <!-- Trilha 4: Full Stack (Tópicos 2, 3, 5, 6, 7) -->
+        <insert tableName="tb_trilha_topico">
+            <column name="id_trilha" valueNumeric="4"/>
+            <column name="id_topico" valueNumeric="2"/>
+        </insert>
+        <insert tableName="tb_trilha_topico">
+            <column name="id_trilha" valueNumeric="4"/>
+            <column name="id_topico" valueNumeric="3"/>
+        </insert>
+        <insert tableName="tb_trilha_topico">
+            <column name="id_trilha" valueNumeric="4"/>
+            <column name="id_topico" valueNumeric="5"/>
+        </insert>
+        <insert tableName="tb_trilha_topico">
+            <column name="id_trilha" valueNumeric="4"/>
+            <column name="id_topico" valueNumeric="6"/>
+        </insert>
+        <insert tableName="tb_trilha_topico">
+            <column name="id_trilha" valueNumeric="4"/>
+            <column name="id_topico" valueNumeric="7"/>
+        </insert>
+    </changeSet>
+
+    <!-- Relacionar Trilhas entre si -->
+    <changeSet id="015-insert-trilha-relacionada" author="system">
+        <!-- Trilha Backend relacionada com DevOps -->
+        <insert tableName="tb_trilha_relacionada">
+            <column name="id_trilha" valueNumeric="1"/>
+            <column name="id_trilha_relacionada" valueNumeric="3"/>
+        </insert>
+
+        <!-- Trilha Frontend relacionada com Full Stack -->
+        <insert tableName="tb_trilha_relacionada">
+            <column name="id_trilha" valueNumeric="2"/>
+            <column name="id_trilha_relacionada" valueNumeric="4"/>
+        </insert>
+
+        <!-- Trilha Full Stack relacionada com Backend -->
+        <insert tableName="tb_trilha_relacionada">
+            <column name="id_trilha" valueNumeric="4"/>
+            <column name="id_trilha_relacionada" valueNumeric="1"/>
+        </insert>
+
+        <!-- Trilha Full Stack relacionada com Frontend -->
+        <insert tableName="tb_trilha_relacionada">
+            <column name="id_trilha" valueNumeric="4"/>
+            <column name="id_trilha_relacionada" valueNumeric="2"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
+

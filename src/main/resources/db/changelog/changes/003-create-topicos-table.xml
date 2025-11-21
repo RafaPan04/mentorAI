@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="003-create-topicos-table" author="system">
+        <createTable tableName="tb_topicos">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="ds_nome" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ds_nivel" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ds_tema" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nr_curtidas" type="INT" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ds_conteudo" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ds_referencias" type="TEXT"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="005-create-topicos-relacionados-table" author="system">
+        <createTable tableName="tb_topicos_relacionados">
+            <column name="id_topico" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_topico_relacionado_topico" 
+                             references="tb_topicos(id)" deleteCascade="true"/>
+            </column>
+            <column name="id_topico_relacionado" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_topico_relacionado_topico_rel" 
+                             references="tb_topicos(id)" deleteCascade="true"/>
+            </column>
+        </createTable>
+        
+        <addPrimaryKey tableName="tb_topicos_relacionados" 
+                       columnNames="id_topico, id_topico_relacionado" 
+                       constraintName="pk_topicos_relacionados"/>
+    </changeSet>
+
+</databaseChangeLog>
+
